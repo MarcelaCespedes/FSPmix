@@ -1,0 +1,9 @@
+Package: FSPmix
+Type: Package
+Title: Exploratory tool for feature selection and clustering using mixture models
+Version: 0.1.0
+Author: Marcela Cespedes, Amy Chan and james Doecke
+Maintainer: The package maintainer <Marcela.Cespedes@csiro.au>
+Description: Applies univariate mixture models on each feature (K=2) and classifies observations into groups A, B or remain unclassified according to a seperation criteria, group C.
+Encoding: UTF-8
+LazyData: true

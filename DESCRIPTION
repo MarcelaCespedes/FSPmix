@@ -1,6 +1,6 @@
 Package: FSPmix
 Type: Package
-Title: Exploratory tool for feature selection and clustering using mixture models
+Title: Exploratory tool for fast unsupervised features selection and clustering using mixture models
 Version: 0.1.0
 Author: Marcela Cespedes, Amy Chan and james Doecke
 Maintainer: The package maintainer <Marcela.Cespedes@csiro.au>

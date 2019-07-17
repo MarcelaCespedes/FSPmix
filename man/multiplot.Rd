@@ -2,7 +2,7 @@
 \alias{multiplot}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-multiplot
+Multiplot various ggplot objects into a single frame
 }
 \description{
 Multiplot function to plot multiplt ggplot objects onto one plot window. This code is freely available from http://www.cookbook-r.com/Graphs/Multiple_graphs_on_one_page_(ggplot2)/
@@ -13,9 +13,7 @@ multiplot(plotlist = List.Of.Plots, cols = 2)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
+  \item{x}{ggplot object}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~

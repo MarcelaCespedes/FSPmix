@@ -21,9 +21,10 @@ find_MixtureThreshold(dat, gRoup, boot.size, method=c('diff', 'intersect'),
 Default arguments are method = 'intersection', apply.all.dat = FALSE in order to implement FSPmix algorithm.
 }
 \value{
-  \item{mix.threshold}{Indicator variable denoting if }
- return(list(mix.threshold=mix.threshold$rr, boot.samp = samp.dat, mix.means = mix.means1,
-              sw = sw))
+  \item{mix.threshold}{Real value of mixture intersection}
+  \item{boot.samp}{Bootstrap sample of data set/ vector}
+  \item{mix.mean}{Vector of mixture model means}
+  \item{sw}{boolean: Indicator variable denoting if mix.threshold was found (sw == 1); if threhsold was not found sw == 0}
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -46,7 +47,7 @@ library(reshape2)
 source("SimulationStudy2.r")
 
 # Simulation study for 20 Genes
-dat<- SimulationStudy2()
+dat<- SimulationStudy1()
 head(dat)
 
 op<- find_MixtureThreshold_Simulation(dat = dat[,1], gRoup =as.character(dat$group),

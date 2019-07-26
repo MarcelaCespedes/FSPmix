@@ -8,29 +8,26 @@ Synthetic normalised gene expression data for 20 genes
 As described in xx paper
 }
 \usage{
-SimulationStudy1(x)
+SimulationStudy1(sEEd = 999, no.ppl= 1000)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
+  \item{sEED}{Positive integer; denoting the random generator state for number random generation (see ?set.seed).}
+  \item{no.ppl}{Positive integer; Number of participants to simulate normalised gene expression data.}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+First simulation for FSPmix as described in xx.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{dat}{data.frame object of the 20 simulated gene expressions (columns) for no.ppl (rows). Additional columns include participant identifier and latent classification as group.}
+  \item{plot.ColouredCoded.genes}{ggplot object of the density of the 20 features coloured coded into 2 classifications.}
+  \item{plot.WhatFSPmixSees}{ggplot object of uncoloured densities of the distributions that FSPmix will categorise into either 'A' or 'B' groups.}
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Marcela Cespedes
 }
 \note{
 %%  ~~further notes~~
@@ -42,16 +39,14 @@ SimulationStudy1(x)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+op<- SimulationStudy1(sEEd = 487, no.ppl = 1000)
 
-## The function is currently defined as
-function (x)
-{
-  }
+head(op$dat)
+
+# View 20 simulated genes (features) coloured coded into groups 'A' and 'B'
+op$plot.ColouredCoded.genes
+
+# View 20 simulated genes (features) densities
+op$plot.WhatFSPmixSees
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ Simulation }% use one of  RShowDoc("KEYWORDS")

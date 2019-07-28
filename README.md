@@ -139,3 +139,4 @@ ggplot(Fig1.dat, aes(x = Feature, y = value, colour = Performance)) +
   theme(legend.position="bottom") +
   theme(axis.text.x = element_text(angle = 70,hjust = 1, size = 14) ) 
 ```
+![Fig1](Fig1.png)

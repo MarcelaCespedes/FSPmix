@@ -111,6 +111,16 @@ View specificity and sensitivity output for all simulated genes
 ```{r}
 names(Specificity.Sensitivity.Res)<- paste("Gene.",1:20, sep = "")
 Specificity.Sensitivity.Res
+
+#$Gene.1
+#      pred.A pred.B
+#sol.A  1.000  0.000
+#sol.B  0.069  0.931
+#
+#$Gene.2
+#      pred.A pred.B
+#sol.A  0.967  0.033
+#sol.B  0.097  0.903
 ```
 
 Replicate Figure 1 in manuscript

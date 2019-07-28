@@ -12,15 +12,6 @@ library(FSPmix)
 
 ## Simple example
 
-```{r}
-library(ggplot2)
-
-source("SimulationStudy1.r")
-source("FSPmix_Sim.r")
-source("spec_sens.r")
-source("multiplot.r")  # <-- once package is loaded am not sure if I should include all these source() calls
-```
-
 Simulation study 1: simulate 20 gene data
 
 ```{r}
@@ -42,6 +33,7 @@ dat[1:5, c(1:3, 21, 22)]
 ```
 
 Set up simulation variables for FSPmix_Sim
+
 ```{r}
 feature.dat<- op$dat[, 1:20]
 class<- op$dat$group
@@ -65,14 +57,40 @@ multiplot(plotlist = sim.op$all.plots, cols = 5)
 ![SimOP1](SimulationOP1.png)
 
 
-Assess prediction performance
+Assess prediction performance of groups A, B and C
+
 ```{r}
 length(sim.op$all.pred.st)
 # Summary of predictions for each simulated Gene
 summary.pred <- sapply(sim.op$all.pred.st, function (x) table(x$Pred))
 colnames(summary.pred)<- paste("Gene.",1:20, sep = "")
-summary.pred
+t(summary.pred)
+#         Pred.A Pred.B Pred.C
+# Gene.1     255    217     28
+# Gene.2     261    232      7
+# Gene.3     284    197     19
+# Gene.4     271    201     28
+# Gene.5     272    214     14
+# Gene.6     274    210     16
+# Gene.7     292    187     21
+# Gene.8     291    186     23
+# Gene.9     289    178     33
+# Gene.10    317    158     25
+# Gene.11    215    271     14
+# Gene.12    218    277      5
+# Gene.13    192    263     45
+# Gene.14    208    269     23
+# Gene.15    186    254     60
+# Gene.16    179    273     48
+# Gene.17    213    273     14
+# Gene.18    157    299     44
+# Gene.19    150    293     57
+# Gene.20    148    321     31
+```
 
+Assess specificity and sensitivity
+
+```{r}
 pred.A<- pred.B<- pred.C<- matrix(NA, nrow = 1, ncol = 4)
 colnames(pred.A)<- colnames(pred.B)<- colnames(pred.C)<- c("Gene", "ppl", "Pred", "id")
 
@@ -107,7 +125,8 @@ pred.B<- pred.B[-1,]
 pred.C<- pred.C[-1,]
 ```
 
-View specificity and sensitivity output for all simulated genes
+View summaries of specificity and sensitivity output for all simulated genes
+
 ```{r}
 names(Specificity.Sensitivity.Res)<- paste("Gene.",1:20, sep = "")
 Specificity.Sensitivity.Res
@@ -125,11 +144,12 @@ Specificity.Sensitivity.Res
 ```
 
 Replicate Figure 1 in manuscript
+
 ```{r}
 Fig1.dat<- melt(Fig1.dat, id.vars = "Feature")
 Fig1.dat$Feature<- factor(Fig1.dat$Feature, levels = unique(Fig1.dat$Feature) )
-Fig1.dat$Performance<- factor(Fig1.dat$Performance, levels = c("Sensitivity", "Specificity"))
 colnames(Fig1.dat)[2]<- "Performance"
+Fig1.dat$Performance<- factor(Fig1.dat$Performance, levels = c("Sensitivity", "Specificity"))
 
 x11()
 ggplot(Fig1.dat, aes(x = Feature, y = value, colour = Performance)) +

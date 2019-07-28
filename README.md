@@ -31,8 +31,14 @@ op<- SimulationStudy1(sEEd = 948575, no.ppl = no.ppl)
 #op$plot.WhatFSPmixSees
 
 dat<- op$dat
-head(dat)
 dim(dat)
+dat[1:5, c(1:3, 21, 22)] 
+#   Feature.1 Feature.2 Feature.3 ppl group
+#1 -2.0998962 -1.526716 -2.416620   1     A
+#2 -2.5889306 -2.127243 -1.975803   2     A
+#3 -1.3694953 -1.694779 -2.476104   3     A
+#4 -0.4527216 -1.414173 -1.451656   4     A
+#5 -1.2560887 -2.059748 -1.482444   5     A
 ```
 
 Set up simulation variables for FSPmix_Sim

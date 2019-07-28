@@ -62,6 +62,8 @@ View simulation results
 x11()
 multiplot(plotlist = sim.op$all.plots, cols = 5)
 ```
+![SimOP1](SimulationOP1.png)
+
 
 Assess prediction performance
 ```{r}

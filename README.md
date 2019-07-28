@@ -12,7 +12,7 @@ library(FSPmix)
 
 ## Simple example
 
-Simulation study 1: simulate 20 gene data
+Simulation study 1: Simulate 20 gene data for `no.ppl` participants
 
 ```{r}
 no.ppl = 500
@@ -39,7 +39,11 @@ feature.dat<- op$dat[, 1:20]
 class<- op$dat$group
 boot.size<- round(no.ppl*0.8) # size of boot size sample
 no.bootstrap<- 100 #500 # as per paper - this takes a while
+```
 
+Run FSPmix algorithm
+
+```{r}
 sim.op<- FSPmix_Sim(boot.size = boot.size,
                     no.bootstrap = no.bootstrap,
                     dat = feature.dat, 
@@ -50,6 +54,7 @@ sim.op$summ.op # <-- view summary of output
 ```
 
 View simulation results
+
 ```{r}
 x11()
 multiplot(plotlist = sim.op$all.plots, cols = 5)

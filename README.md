@@ -17,8 +17,8 @@ Simulation study 1: Simulate 20 gene data for `no.ppl` participants
 ```{r}
 no.ppl = 500
 op<- SimulationStudy1(sEEd = 948575, no.ppl = no.ppl)
-#x11()
-#op$plot.ColourCoded.genes
+x11()
+op$plot.ColourCoded.genes
 #op$plot.WhatFSPmixSees
 ```
 ![SimulatedData1](SimulatedData_SimStudy1.png)

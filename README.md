@@ -20,7 +20,10 @@ op<- SimulationStudy1(sEEd = 948575, no.ppl = no.ppl)
 #x11()
 #op$plot.ColourCoded.genes
 #op$plot.WhatFSPmixSees
+```
+![SimulatedData1](SimulatedData_SimStudy1.png)
 
+```{r}
 dat<- op$dat
 dim(dat)
 dat[1:5, c(1:3, 21, 22)] 

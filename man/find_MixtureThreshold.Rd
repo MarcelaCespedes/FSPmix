@@ -13,7 +13,7 @@ find_MixtureThreshold(dat, boot.size, method=c('diff', 'intersect'),
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{dat}{vector of selected features.}
+  \item{dat}{Vector of selected features}
   \item{method}{Either 'diff' or 'intersection'. Former argument estimates the difference in the posterior probability. Later argument calls on function findInt() to find the real value intersection between two Guassian mixture means.}
   \item{apply.all.dat}{boolean: FALSE implies take sample with replacement on dat and is the default for bootstrapping; TRUE denotes otherwise and no sampling of dat is performed}
 }

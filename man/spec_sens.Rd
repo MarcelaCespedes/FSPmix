@@ -4,33 +4,29 @@
 Calculate specificity and sensitivity on FSPmix simulation study predictions
 }
 \description{
-Compute confusion table
+Compute 2x2 confusion matrix as a ratio as well as with numerical values.
 }
 \usage{
 spec_sens(real.dat, pred.dat)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{real.dat}{Simulated data }
-  \item{pred.dat}{
-%%     ~~Describe \code{pred.dat} here~~
-}
+  \item{real.dat}{Vector of simulated data which was fed to FSPmix algorithm for a particular feature. Feature classified into groups A or B.}
+  \item{pred.dat}{Vector of predictions for a particular feature, classified into either groups A or B.}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{tot.obs}{Total number of observations classified}
+  \item{conf.mat}{Sensitivity and specificity values on a 2 x 2 confusion matrix}
+  \item{con.mat.ratio}{Sensitivity and specificity percentages, 2 x 2 matrix}
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Marcela Cespedes
 }
 \note{
 %%  ~~further notes~~
@@ -42,53 +38,17 @@ spec_sens(real.dat, pred.dat)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+set.seed(123)
 
-## The function is currently defined as
-function (real.dat, pred.dat)
-{
-    real.dat <- real.dat[order(real.dat$ppl), ]
-    pred.dat <- pred.dat[order(pred.dat$ppl), ]
-    dat.sol <- subset(real.dat, ppl \%in\% pred.dat$ppl)
-    tot.obs <- dim(dat.sol)[1]
-    tot.obs
-    sol.A <- subset(dat.sol, group == "A")
-    tot.A = dim(sol.A)[1]
-    tot.A
-    p.A <- subset(pred.dat, Pred == "Pred.A")
-    pred.A <- dim(p.A)[1]
-    pred.A
-    tp = length(intersect(sol.A$ppl, p.A$ppl))
-    tp
-    pred.A.sol.B = abs(pred.A - tp)
-    pred.A.sol.B
-    sol.B <- subset(dat.sol, group == "B")
-    tot.B = dim(sol.B)[1]
-    tot.B
-    p.B <- subset(pred.dat, Pred == "Pred.B")
-    pred.B <- dim(p.B)[1]
-    pred.B
-    tn <- length(intersect(sol.B$ppl, p.B$ppl))
-    tn
-    pred.B.sol.A = abs(pred.B - tn)
-    pred.B.sol.A
-    conf.mat <- data.frame(pred.A = c(NA, NA), pred.B = c(NA,
-        NA))
-    conf.mat[1, 1] <- tp
-    conf.mat[2, 2] <- tn
-    conf.mat[1, 2] <- pred.B.sol.A
-    conf.mat[2, 1] <- pred.A.sol.B
-    row.names(conf.mat) <- c("sol.A", "sol.B")
-    conf.mat.ratio <- conf.mat
-    conf.mat.ratio[1, ] <- conf.mat.ratio[1, ]/tot.A
-    conf.mat.ratio[2, ] <- conf.mat.ratio[2, ]/tot.B
-    return(list(tot.obs = tot.obs, conf.mat = conf.mat, conf.mat.ratio = round(conf.mat.ratio,
-        3)))
-  }
+real.data<- data.frame(ppl = 1:100,
+                      group = sample(c("A", "B"), size = 100,prob = c(0.5, 0.5), replace=TRUE ))
+
+pred.data<- data.frame(ppl = 1:100,
+                       Pred = sample(c("Pred.A", "Pred.B"), size = 100,prob = c(0.5, 0.5), replace=TRUE ))
+
+spec_sens(real.dat = real.data, pred.dat = pred.data)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{Specificity}% use one of  RShowDoc("KEYWORDS")
+\keyword{Sensitivity}% __ONLY ONE__ keyword per line

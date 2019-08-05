@@ -7,8 +7,6 @@
 find_MixtureThreshold_Simulation<- function(dat, gRoup, boot.size, method=c('diff', 'intersect'),
                           apply.all.dat = FALSE){
 
-  #source("findInt.r")
-
   method <- match.arg(method)
   sw = 0
   #if(!is.null(boot.size)){  # set default bootstrap sample size

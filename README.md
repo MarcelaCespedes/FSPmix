@@ -10,7 +10,7 @@ install_github('MarcelaCespedes/FSPmix')
 library(FSPmix)
 ```
 
-## Simple example
+## Simple simulated example
 
 Simulation study 1: Simulate 20 gene data for `no.ppl` participants
 
@@ -169,3 +169,5 @@ ggplot(Fig1.dat, aes(x = Feature, y = value, colour = Performance)) +
   theme(axis.text.x = element_text(angle = 70,hjust = 1, size = 14) ) 
 ```
 ![Fig1](Fig1.png)
+
+## Example on real data

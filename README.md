@@ -17,7 +17,7 @@ Simulation study 1: Simulate 20 gene data for `no.ppl` participants
 ```{r}
 no.ppl = 500
 op<- SimulationStudy1(sEEd = 948575, no.ppl = no.ppl)
-x11()
+
 op$plot.ColourCoded.genes
 #op$plot.WhatFSPmixSees
 ```
@@ -59,7 +59,6 @@ sim.op$summ.op # <-- view summary of output
 View simulation results
 
 ```{r}
-x11()
 multiplot(plotlist = sim.op$all.plots, cols = 5)
 ```
 ![SimOP1](SimulationOP1.png)
@@ -159,7 +158,7 @@ Fig1.dat$Feature<- factor(Fig1.dat$Feature, levels = unique(Fig1.dat$Feature) )
 colnames(Fig1.dat)[2]<- "Performance"
 Fig1.dat$Performance<- factor(Fig1.dat$Performance, levels = c("Sensitivity", "Specificity"))
 
-x11()
+
 ggplot(Fig1.dat, aes(x = Feature, y = value, colour = Performance)) +
   geom_point(size=4) +
   geom_hline(yintercept = 0.9) +

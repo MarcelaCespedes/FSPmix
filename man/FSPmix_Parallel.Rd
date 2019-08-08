@@ -42,6 +42,20 @@ Marcela Cespedes
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+# Generate data from simulation  study
+no.ppl = 500
+op<- SimulationStudy1(sEEd = 948575, no.ppl = no.ppl)
+
+#x11()
+#op$plot.ColourCoded.genes
+#op$plot.WhatFSPmixSees
+
+# set up simulation variables for FSPmix_Sim
+feature.dat<- op$dat[, 1:20]
+boot.size<- round(no.ppl*0.8) # set bootstrap size sample
+no.bootstrap<- 300 # 500 as per paper - this takes a while
+
+
 library(doParallel)
 # Create and registed cluster. See ?makeCluster for further details
 # Below we allocate 2 CPU's for
@@ -60,7 +74,7 @@ class(sim.op)
 names(sim.op)
 
 # Plot output
-multiplot(plotlist = sim.op$all.plots, cols = 5)
+# multiplot(plotlist = sim.op$all.plots, cols = 5)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

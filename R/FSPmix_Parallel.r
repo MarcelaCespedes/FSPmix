@@ -5,8 +5,8 @@
 #' boot.size: positive integer, size of boot strap sample
 #' no.bootstrap: positive integer, number of times to bootstrap
 
-FSPmix_Parallel<- function(dat, class,
-                      boot.size = NULL, no.bootstrap=NULL){
+FSPmix_Parallel<- function(dat,
+                           boot.size = NULL, no.bootstrap=NULL){
 
   if(is.null(boot.size)){
     boot.size<- round(dim(dat)[1]*0.8) # size of bootstrap sample is 80% of participant size
@@ -26,20 +26,11 @@ FSPmix_Parallel<- function(dat, class,
     rgb(rgbcols[1,],rgbcols[2,],rgbcols[3,],alpha/100*255,max=255)
   }
 
-  # prep variables to store output
-  rownames(dat)<- ppl<- 1:dim(dat)[1]
-  no.genes<- dim(dat)[2]
-  THRESHOLD.METHOD <- 'intersect'
-
-  all.Te_mu_Store<- list()
-  all.SampDat_Store<- all.mu_summary<- all.pred.st<- all.plots<- list()
-  two.groups<- st.dev.T_e<- rep(NA, no.genes)
-
-
   ## ****************************************************************
   ## Begin FSPmix algorithm
   ##
 
+  no.gene<- dim(dat)[2]
   final.op <- foreach(p=1:no.gene, .errorhandling='pass') %dopar% {
 
     library(dplyr)
@@ -49,7 +40,8 @@ FSPmix_Parallel<- function(dat, class,
 
     ## Include all functions within the for-loop: in order to make them accessible
     ## for all nodes
-    find_MixtureThreshold_Simulation<- function(dat, boot.size, method=c('diff', 'intersect'),
+    find_MixtureThreshold_Simulation<- function(dat, boot.size,
+                                                method=c('diff', 'intersect'),
                                                 apply.all.dat = FALSE){
 
       method <- match.arg(method)
@@ -118,12 +110,17 @@ FSPmix_Parallel<- function(dat, class,
 
     ######################################################
     # Start FSPmix implementation
+
+    # prep variables to store output
+    rownames(dat)<- ppl<- 1:dim(dat)[1]
     THRESHOLD.METHOD <- 'intersect'
 
-    SampDat_Store<- data.frame(dat = NA, gRoup = NA, boot.str = NA)
+    SampDat_Store<- data.frame(dat = NA, boot.str = NA)
     Te_mu_store<- data.frame(Thresh = rep(NA, no.bootstrap),
                              mu1 = rep(NA, no.bootstrap),
                              mu2 = rep(NA, no.bootstrap))
+
+    two.groups<- st.dev.T_e<- NA
 
     ##
     ## Conduct bootstrap
@@ -152,8 +149,6 @@ FSPmix_Parallel<- function(dat, class,
 
     ##
     ## Criterion to determine if there are two groups in the data
-
-    all.Te_mu_Store[[p]]<- Te_mu_store
     mean.T_e<- mean(Te_mu_store$Thresh)
     mean.T_e
 
@@ -168,14 +163,13 @@ FSPmix_Parallel<- function(dat, class,
 
     SampDat_Store<- SampDat_Store[-1,]
     rownames(SampDat_Store)<- 1:dim(SampDat_Store)[1]
-    all.SampDat_Store[[p]]<- SampDat_Store
 
     # two groups found?
     if(mean.mu[1] < (mean.T_e - sd.T_e) & (mean.T_e + sd.T_e) < mean.mu[2]){
-      two.groups[p]<- TRUE
+      two.groups<- TRUE
       interval.T_e<- c(mean.T_e - sd.T_e, mean.T_e + sd.T_e)
     }else{
-      two.groups[p]<- FALSE
+      two.groups<- FALSE
       interval.T_e<- c(NA,NA)
     }
 
@@ -188,14 +182,13 @@ FSPmix_Parallel<- function(dat, class,
 
 
     #### plot genes  --------------------------------------------
-    SampDat_Store$gRoup<- factor(SampDat_Store$gRoup, levels = c("A", "B"))
     SampDat_Store$boot.str<- factor(SampDat_Store$boot.str)
 
     #x11()
-    p.prot<- ggplot(SampDat_Store, aes(x = dat, fill = gRoup,group = boot.str)) +
+    p.Feature<- ggplot(SampDat_Store, aes(x = dat, group = boot.str)) +
       #geom_density(alpha = 0.1) +
       geom_density(colour = fade("black",20))+
-      ggtitle(paste("Sim Gene ", p,sep = "") ) +
+      ggtitle(paste("Feature ", p,sep = "") ) +
       geom_vline(xintercept = interval.T_e, colour = "blue", size=1) +
       geom_vline(xintercept = mean(mean.mu[1]), colour = "gray55", size=1) +
       geom_vline(xintercept = mean(mean.mu[2]), colour = "gray55", size=1) +
@@ -215,52 +208,57 @@ FSPmix_Parallel<- function(dat, class,
                label = paste("mu2: ", round(mean.mu[2],2), sep = "") ,
                size=3, colour = "gray55") +
       theme(text = element_text(size=12))+
-      xlab("Simulated gene expression")
+      xlab("Feature value")
 
     #x11()
-    #p.prot
-    all.plots[[p]]<- p.prot
+    #p.Feature
 
     ##
     ## Identify the group (A/B) for those individuals who the algorithm
     ## identified two groups over all genes
 
-    if(two.groups[p]){
-      sub.d<- data.frame(Gene = dat[,p], ppl = ppl)
+    if(two.groups){
+      sub.d<- data.frame(Feature = dat[,p], ppl = ppl)
 
       sub.d<- mutate(sub.d,
-                     Pred = factor(ifelse(Gene < interval.T_e[1], "Pred.A",
-                                          ifelse(Gene > interval.T_e[2], "Pred.B", "Pred.C")),
+                     Pred = factor(ifelse(Feature < interval.T_e[1], "Pred.A",
+                                          ifelse(Feature > interval.T_e[2], "Pred.B", "Pred.C")),
                                    levels = c("Pred.A", "Pred.B", "Pred.C")),
                      id = rep(colnames(dat)[p], dim(sub.d)[1]))
 
-      all.pred.st[[p]] <- sub.d
+      sub.d
 
+      # How many times did the algorithm detect 2 groups?
+      summ.op<-data.frame(Feature.no = p, two.groups=two.groups,
+                          mean.Te = round(mean.T_e,2),
+                          sd.Te = round(sd.T_e,2),
+                          mean.mu1 = round(mean.mu[1],2),
+                          mean.mu2 = round(mean.mu[2],2) )
     }
 
-    # How many times did the algorithm detect 2 groups?
-    summ.op<-data.frame(gene.no = 1:no.genes, two.groups=two.groups,
-                        mean.Te = round(unlist(lapply(all.Te_mu_Store, function(x) mean(x$Thresh))),2),
-                        sd.Te = round(unlist(lapply(all.Te_mu_Store, function(x) sd(x$Thresh))),2),
-                        mean.mu1 = round(unlist(lapply(all.Te_mu_Store, function(x) mean(x$mu1))),2),
-                        mean.mu2 = round(unlist(lapply(all.Te_mu_Store, function(x) mean(x$mu2))),2) )
-
     #summ.op
+
     ###
-    op<- list(all.pred.st=all.pred.st,
-              two.groups=two.groups,
-              summ.op = summ.op,
-              all.Te_mu_Store=all.Te_mu_Store,
-              all.SampDat_Store=all.SampDat_Store,
-              all.mu_summary=all.mu_summary,
-              all.plots = all.plots)
+    if(two.groups){
+      op<- list(Classification.Pred=sub.d,
+                two.groups=two.groups,
+                summ.op = summ.op,
+                SampDat_Store=SampDat_Store,
+                Plot = p.Feature)
+    }else{
+      op<- list(two.groups=two.groups,
+                summ.op = NULL,
+                SampDat_Store=SampDat_Store,
+                Plot = p.Feature)
+    }
+
 
   }
 
 
 
   stopCluster(cl)
-  return(op)
+  return(final.op)
 }
 
 

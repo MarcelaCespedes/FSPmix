@@ -2,29 +2,25 @@
 \alias{FSPmix_Parallel}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Implements FSPmix in parallelised manner
+Implements FSPmix in parallelised manner (splits load across multiple CPUs)
 }
 \description{
-Implements FSPmix using parallelisation. Prior to calling FSPmix_Parallel(), user to load required parallelisation packages and allocate the number of cores. FSPmix will be implemented with workload split between the number of allocated CPUs.
+Implements FSPmix using parallelisation. Prior to calling FSPmix_Parallel(), user must load required parallelisation packages and allocate the number of cores. FSPmix will be implemented with workload split between the number of allocated CPUs.
 }
 \usage{
 FSPmix_Parallel(dat, boot.size = NULL, no.bootstrap=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{dat}{Data frame of the }
-  \item{boot.size}{}
-  \item{no.bootstrap}{}
+  \item{dat}{Data frame (required) of the number of features to analyse as columns, number of observations as rows}
+  \item{boot.size}{Integer, size of bootstrap sample. If boot.size = NULL, then by default the bootstrap sample becomes floor(0.8*dim(dat)[1])}
+  \item{no.bootstrap}{Integer, number of times to perform bootstrapping per feature. If no.bootstrap = NULL, then by default no.bootstrap = 500}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item()
 }
 \references{
 %% ~put references to the literature/web site here ~

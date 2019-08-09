@@ -95,6 +95,7 @@ FSPmix_Parallel<- function(dat,
       if (filter) {
         # take only the Real roots
         rr <- Re(rr[sapply(Im(rr), function (x) isTRUE(all.equal(x, 0)))])
+        rr <- rr[rr >= min(m1, m2) & rr <= max(m1, m2)]
         if (length(rr) == 0) {
           sw <- 1
         } else {

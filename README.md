@@ -171,10 +171,9 @@ ggplot(Fig1.dat, aes(x = Feature, y = value, colour = Performance)) +
 
 ## Example on real data
 
-Amyloid uptake measured by Positrom Emission Topography (PET) imaging for 5 participants on xx regions of interest (ROI's) was parcellated by the Automated Anatomical Atlas (AAL), see [here](https://www.sciencedirect.com/science/article/pii/S1053811901909784) for list of region names. This data  comes from [MilxXplore](https://milxview.csiro.au/MilxXplore/Demo/xplorer_study/AIBL/Demo) website; this data is publicly available and was downloaded 13 August 2019. These participants were affiliated with the [AIBL](https://aibl.csiro.au/) study. Each participant has at least two or more follow-ups and for the purpose of demonstrating the utility of the FSPmix, here, we treated each set of ROI observations (features) as independent and identically distributed. 
+Amyloid uptake measured by Positrom Emission Topography (PET) imaging for 5 participants on 89 regions of interest (ROIs) was parcellated by the Automated Anatomical Atlas (AAL), see [here](https://www.sciencedirect.com/science/article/pii/S1053811901909784) for list of region names. Data was taken from [MilxXplore](https://milxview.csiro.au/MilxXplore/Demo/xplorer_study/AIBL/Demo) website; this data is publicly available and was downloaded 13 August 2019. These participants were affiliated with the longitudinal Australian Imaging and Biomarkers Lifestyle study of ageing [(AIBL)](https://aibl.csiro.au/). Each participant has at least two or more follow-ups and for the purpose of demonstrating the utility of the FSPmix, here, we treated each set of ROI observations (features) as independent and identically distributed. 
 
 Load and process the data
-
 ```{r}
 # Downloaded from https://milxview.csiro.au/MilxXplore/Demo/xplorer_study/AIBL/Demo
 # Monday 13 August 2019
@@ -220,7 +219,6 @@ length(sim.op) # length of number of Features to analyse
 ```
 
 View summary of output, namely which features (ROIs) FSPmix found two groups, as well as final density plots
-
 ```{r}
 plot.all<- list()
 for(i in 1:45){

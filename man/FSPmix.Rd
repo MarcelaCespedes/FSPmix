@@ -1,18 +1,18 @@
-\name{FSPmix_Parallel}
-\alias{FSPmix_Parallel}
-%- Also NEED an '\alias' for EACH other topic documented here.
+\name{FSPmix}
+\alias{FSPmix}
+
 \title{
-Implements FSPmix in parallelised manner (splits load across multiple CPUs)
+Feature selection and prediction (FSPmix) algorithm
 }
 \description{
-Implements FSPmix using parallelisation. Prior to calling FSPmix_Parallel(), user must load required parallelisation packages and allocate the number of cores. FSPmix will be implemented with workload split between the number of allocated CPUs (workers). Input requires the data and parameters required to enable FSPmix algorithm, this function returns a list of the combined output from all workers.
+Implements the FSPmix algorithm on real data in a serial manner, that is, using a single CPU. For parallelised version use FSPmix_Parallel().
 }
 \usage{
-FSPmix_Parallel(dat, boot.size = NULL, no.bootstrap=NULL)
+FSPmix(dat, boot.size = NULL, no.bootstrap=NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{dat}{Data frame (required) of the number of features to analyse as columns, number of observations as rows}
+  \item{dat}{Data frame containing features of interest (columns) of each observation (rows)}
   \item{boot.size}{Integer, size of bootstrap sample. If boot.size = NULL, then by default the bootstrap sample becomes floor(0.8*dim(dat)[1])}
   \item{no.bootstrap}{Integer, number of times to perform bootstrapping per feature. If no.bootstrap = NULL, then by default no.bootstrap = 500}
 }
@@ -43,50 +43,62 @@ Marcela Cespedes
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-# Generate data from simulation  study
-no.ppl = 500
-op<- SimulationStudy1(sEEd = 948575, no.ppl = no.ppl)
+library(FSPmix)
+library(ggplot2)
+library(reshape2)
 
-#x11()
-#op$plot.ColourCoded.genes
-#op$plot.WhatFSPmixSees
+## ***************************************************
+## Process real data
+# Apply on real data: Downloaded from https://milxview.csiro.au/MilxXplore/Demo/xplorer_study/AIBL/Demo
+# Monday 13 August 2019
+pet.ROI<- read.csv(file = "PiB_uptake.csv", header=TRUE, sep = ",")
+# Remove Vermis, cerebellum and other columns which are not needed
+pet.ROI<- pet.ROI[, -c(5,6, 97:123)]
+# combine left and right ROIs together to increase sample size
+# Currently have 16 observations per ROI - by combining the left and right, we double to 32 obs per ROI
+left.ROIs<- pet.ROI[, seq(from =5, to=93, by=2)]
+colnames(left.ROIs)<- substr(colnames(left.ROIs), start=1, stop = nchar(colnames(left.ROIs))-5)
+colnames(left.ROIs)[7]<- "Inferior_frontal_gyrus.triangular_part"
+right.ROIs<- pet.ROI[, seq(from =6, to=94, by=2)]
+colnames(right.ROIs)<- substr(colnames(right.ROIs), start=1, stop = nchar(colnames(right.ROIs))-6)
 
-# set up simulation variables for FSPmix_Sim
-feature.dat<- op$dat[, 1:20]
-boot.size<- round(no.ppl*0.8) # set bootstrap size sample
+feature.dat<- rbind(left.ROIs, right.ROIs)
+##
+## Number of features
+dim(feature.dat)[2]  # 45
+
+## View the raw data
+plot.fd<- melt(feature.dat)
+ggplot(plot.fd, aes(x = value)) + geom_density(alpha = 0.8) +
+  facet_wrap(.~variable)+ #, scales="free") +
+  theme_bw() +
+  ggtitle("Combined Left & Right ROIs densities")
+
+## **********************************************
+## Run FSPmix
+no.ppl<- dim(feature.dat)[1]
+boot.size<- round(no.ppl*0.8)
 no.bootstrap<- 300
 
-
-library(doParallel)
-# Create and registed cluster. See ?makeCluster for further details
-# Below we allocate 2 CPU's for
-
-cl<-makeCluster(2, outfile="MulticoreLogging.txt")
-cl
-registerDoParallel(cl)
-
-# Run FSPmix
-sim.op<- FSPmix_Parallel(dat=feature.dat,
-                         boot.size = boot.size,
-                         no.bootstrap= no.bootstrap)
+sim.op<- FSPmix(dat=feature.dat,
+                boot.size = boot.size,
+                no.bootstrap= no.bootstrap)
 
 length(sim.op) # length of number of Features to analyse
 class(sim.op)
 
 # Show which features FSPmix found two groups
 plot.all<- list()
-for(i in 1:20){
+for(i in 1:45){
   tmp.op<- sim.op[[i]]
   plot.all[[i]]<- tmp.op$Plot
   print(tmp.op$two.groups)
 }
-
-multiplot(plotlist = plot.all, cols = 5)
+multiplot(plotlist = plot.all, cols = 7)
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Parallelisation}% use one of  RShowDoc("KEYWORDS")
 \keyword{Mixture Model}% __ONLY ONE__ keyword per line
 \keyword{Feature selection}
 \keyword{Prediction}

@@ -10,7 +10,7 @@ install_github('MarcelaCespedes/FSPmix')
 library(FSPmix)
 ```
 
-## Simple simulated example
+## Simple simulated data example
 
 Simulation study 1: Simulate 20 gene data for `no.ppl` participants
 
@@ -203,7 +203,9 @@ ggplot(plot.fd, aes(x = value)) + geom_density(alpha = 0.8) +
   theme_bw() +
   ggtitle("Combined Left & Right ROIs densities")
 ```
-Run FSPmix (in serial) - treating each observation as iid
+![ROIdensities](PiB_ROIdensities.png)
+
+Run FSPmix (in serial) - treat each observation as iid
 
 ```{r}
 no.ppl<- dim(feature.dat)[1]
@@ -228,4 +230,4 @@ for(i in 1:45){
 }
 multiplot(plotlist = plot.all, cols = 7)
 ```
-
+![FSPmixPETresults](PiB_FSPmixResults.png)

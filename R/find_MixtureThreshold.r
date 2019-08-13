@@ -1,21 +1,21 @@
 #' Derive the intersection between two univariate Gaussian mixture models
 #' dat: vector of continuous observations to be classified
-#' gRoup: vector of string characters - known membership of observations
 #' bootzise: integer, size of sub-sample of data
 #' method: two options as to how to find threshold
 
-find_MixtureThreshold<- function(dat, gRoup, boot.size, method=c('diff', 'intersect'),
+find_MixtureThreshold<- function(dat, boot.size, method=c('diff', 'intersect'),
                           apply.all.dat = FALSE){
 
   source("FindInt.r")
 
   method <- match.arg(method)
   sw = 0
-  #if(!is.null(boot.size)){  # set default bootstrap sample size
-  #  boot.size = floor(0.8*dim(dat)[1])
-  #}
-  full.dat<- samp.dat<- data.frame(dat=dat, gRoup=gRoup)
 
+  if(!is.null(boot.size)){  # set default bootstrap sample size
+    boot.size = floor(0.8*dim(dat)[1])
+  }
+
+  full.dat<- samp.dat<- data.frame(dat=dat)
   if(apply.all.dat == FALSE){
     # Not proper bootstrap if I do sampling WITHOUT replacement
     #samp.dat<- sample_n(full.dat, boot.size, replace=FALSE)

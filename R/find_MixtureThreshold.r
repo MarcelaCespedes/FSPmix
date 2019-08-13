@@ -11,7 +11,7 @@ find_MixtureThreshold<- function(dat, boot.size, method=c('diff', 'intersect'),
   method <- match.arg(method)
   sw = 0
 
-  if(!is.null(boot.size)){  # set default bootstrap sample size
+  if(is.null(boot.size)){  # set default bootstrap sample size
     boot.size = floor(0.8*dim(dat)[1])
   }
 

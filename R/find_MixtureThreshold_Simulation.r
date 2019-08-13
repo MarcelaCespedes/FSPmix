@@ -9,9 +9,9 @@ find_MixtureThreshold_Simulation<- function(dat, gRoup, boot.size, method=c('dif
 
   method <- match.arg(method)
   sw = 0
-  #if(!is.null(boot.size)){  # set default bootstrap sample size
-  #  boot.size = floor(0.8*dim(dat)[1])
-  #}
+  if(is.null(boot.size)){  # set default bootstrap sample size
+    boot.size = floor(0.8*dim(dat)[1])
+  }
   full.dat<- samp.dat<- data.frame(dat=dat, gRoup=gRoup)
 
   if(apply.all.dat == FALSE){

@@ -16,6 +16,7 @@ pet.ROI<- read.csv(file = "PiB_uptake.csv", header=TRUE, sep = ",")
 \arguments{
 
 }
+
 \details{
   \item{pet.ROI}{Data frame with PET PiB brain measurements for five AIBL participants. Human brain was parcellated onto 116 ROIs as defined by the Automated Anatomical Atlas (AAL). Column names of data set are described below}
   \item{CaseID}{Participant identification number}
@@ -24,8 +25,9 @@ pet.ROI<- read.csv(file = "PiB_uptake.csv", header=TRUE, sep = ",")
   \item{Age.at.MRI}{In order to parcellate the brain into regions, both PET and Magnetic Resonance Imaging (MRI) is required. Age.at.MRI denotes the age of the participant at time of MRI scan}
   \item{Filename}{Name of imaging file}
   \item{Neocortex}{PET PiB uptake of the neocortex}
-  \item{}{Columns 7-123 denote PET PiB update on 116 ROIs of the left and right brain hemisphere.}
-  \item{SUV.in.Reference.Region}{Total Standard Uptake Value (SUV) in reference brain region}}
+  \item{.}{Columns 7-123 denote PET PiB update on 116 ROIs of the left and right brain hemisphere.}
+  \item{SUV.in.Reference.Region}{Total Standard Uptake Value (SUV) in reference brain region}
+}
 
 \value{
 %%  ~Describe the value returned
@@ -47,7 +49,7 @@ Marcela Cespedes
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also MilxXplore \href{https://milxview.csiro.au/MilxXplore/}{website}, Biomedical Informatics Team who developed MilxXplore \href{https://aehrc.com/biomedical-informatics/}{website}, and AIBL longitudinal study of ageing website \url{https://aibl.csiro.au/}. Brain regions for AAL see
+MilxXplore \href{https://milxview.csiro.au/MilxXplore/}{website} for further details, Biomedical Informatics Team who developed MilxXplore \href{https://aehrc.com/biomedical-informatics/}{website}, and AIBL longitudinal study of ageing website \href{https://aibl.csiro.au/}{website}. Brain regions for AAL see
 Tzourio-Mazoyer, N., Landeau, B., Papathanassiou, D., Crivello, F., Etard, O., Delcroix, N., Mazoyer, B. and Joliot, M., 2002. Automated anatomical labeling of activations in SPM using a macroscopic anatomical parcellation of the MNI MRI single-subject brain. Neuroimage, 15(1), pp.273-289.
 }
 \examples{

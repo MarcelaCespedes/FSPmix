@@ -47,7 +47,7 @@ Marcela Cespedes
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also MilxXplore website \url{https://milxview.csiro.au/MilxXplore/}}, Biomedical Informatics Team who developed MilxXplore website \url{https://aehrc.com/biomedical-informatics/}}, and AIBL longitudinal study of ageing website \url{https://aibl.csiro.au/}}. Brain regions for AAL see
+See also MilxXplore \href{https://milxview.csiro.au/MilxXplore/}{website}, Biomedical Informatics Team who developed MilxXplore \href{https://aehrc.com/biomedical-informatics/}{website}, and AIBL longitudinal study of ageing website \url{https://aibl.csiro.au/}. Brain regions for AAL see
 Tzourio-Mazoyer, N., Landeau, B., Papathanassiou, D., Crivello, F., Etard, O., Delcroix, N., Mazoyer, B. and Joliot, M., 2002. Automated anatomical labeling of activations in SPM using a macroscopic anatomical parcellation of the MNI MRI single-subject brain. Neuroimage, 15(1), pp.273-289.
 }
 \examples{

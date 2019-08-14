@@ -1,9 +1,7 @@
 \name{PiB_update}
 \alias{PiB_update}
 \docType{data}
-\title{
-PET PiB AIBL demonstration data set
-}
+\title{PET PiB AIBL demonstration data set}
 \description{
 Demonstration data set of beta-amyloid detected in the human brain measured via Positron Emission Topography imaging with Pittsburgh compound B (PiB) tracer. Data set comprises of PET PiB measurements for five participants from the AIBL study who have between 2-4 observations each. PET PiB readings pertain to brain beta-amyloid measurements parcellated onto 116 brain regions of interest (ROIs).
 

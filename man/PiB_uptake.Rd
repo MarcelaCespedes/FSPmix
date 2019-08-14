@@ -1,5 +1,5 @@
-\name{PiB_update}
-\alias{PiB_update}
+\name{PiB_uptake}
+\alias{PiB_uptake}
 \docType{data}
 \title{PET PiB AIBL demonstration data set}
 \description{

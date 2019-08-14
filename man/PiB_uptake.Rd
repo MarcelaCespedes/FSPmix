@@ -17,7 +17,7 @@ pet.ROI<- read.csv(file = "PiB_uptake.csv", header=TRUE, sep = ",")
 
 }
 
-\details{
+\format{
   \item{pet.ROI}{Data frame with PET PiB brain measurements for five AIBL participants. Human brain was parcellated onto 116 ROIs as defined by the Automated Anatomical Atlas (AAL). Column names of data set are described below}
   \item{CaseID}{Participant identification number}
   \item{TP}{Time point at imaging, baseline is denoted by T0, and subsequent follow-ups are T1-T3}

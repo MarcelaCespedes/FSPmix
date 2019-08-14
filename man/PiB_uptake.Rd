@@ -7,7 +7,7 @@ PET PiB AIBL demonstration data set
 \description{
 Demonstration data set of beta-amyloid detected in the human brain measured via Positron Emission Topography imaging with Pittsburgh compound B (PiB) tracer. Data set comprises of PET PiB measurements for five participants from the AIBL study who have between 2-4 observations each. PET PiB readings pertain to brain beta-amyloid measurements parcellated onto 116 brain regions of interest (ROIs).
 
-Data set was downloaded on Monday 13 August 2019, from \code{\link{https://milxview.csiro.au/MilxXplore/Demo/xplorer_study/AIBL/Demo}}.
+Data set was downloaded on Monday 13 August 2019, from \url{https://milxview.csiro.au/MilxXplore/Demo/xplorer_study/AIBL/Demo}}.
 
 }
 \usage{
@@ -38,7 +38,7 @@ pet.ROI<- read.csv(file = "PiB_uptake.csv", header=TRUE, sep = ",")
 Bourgeat, P., Dore, V., Villemagne, V.L., Rowe, C.C., Salvado, O. and Fripp, J., 2013. MilxXplore: a web-based system to explore large imaging datasets. Journal of the American Medical Informatics Association, 20(6), pp.1046-1052.
 }
 \author{
-Dr Pierrick Bourgeat
+Dr Pierrick Bourgeat,
 Marcela Cespedes
 }
 \note{
@@ -47,7 +47,7 @@ Marcela Cespedes
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-See also MilxXplore website \code{\link{https://milxview.csiro.au/MilxXplore/}}, Biomedical Informatics Team who developed MilxXplore website \code{\link{https://aehrc.com/biomedical-informatics/}}, and AIBL longitudinal study of ageing website \code{\link{https://aibl.csiro.au/}}. Brain regions for AAL see
+See also MilxXplore website \url{https://milxview.csiro.au/MilxXplore/}}, Biomedical Informatics Team who developed MilxXplore website \url{https://aehrc.com/biomedical-informatics/}}, and AIBL longitudinal study of ageing website \url{https://aibl.csiro.au/}}. Brain regions for AAL see
 Tzourio-Mazoyer, N., Landeau, B., Papathanassiou, D., Crivello, F., Etard, O., Delcroix, N., Mazoyer, B. and Joliot, M., 2002. Automated anatomical labeling of activations in SPM using a macroscopic anatomical parcellation of the MNI MRI single-subject brain. Neuroimage, 15(1), pp.273-289.
 }
 \examples{
@@ -87,5 +87,4 @@ ggplot(plot.fd, aes(x = value)) + geom_density(alpha = 0.8) +
 \keyword{MRI}
 \keyword{Neuroimaging}
 \keyword{Alzheimer's disease}
-\keyword{ROI}
 \keyword{ROI}

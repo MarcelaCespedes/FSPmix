@@ -14,7 +14,15 @@ Data set was downloaded on Monday 13 August 2019, from \url{https://milxview.csi
 pet.ROI<- read.csv(file = "PiB_uptake.csv", header=TRUE, sep = ",")
 }
 \arguments{
-
+  \item{pet.ROI}{Data frame with PET PiB brain measurements for five AIBL participants. Human brain was parcellated onto 116 ROIs as defined by the Automated Anatomical Atlas (AAL). Column names of data set are described below}
+  \item{CaseID}{Participant identification number}
+  \item{TP}{Time point at imaging, baseline is denoted by T0, and subsequent follow-ups are T1-T3}
+  \item{Diagnosis}{Clinical diagnosis of participant at each TP. Participants are either healthy (Normal control), mild cognitive impaired (MCI patient) or diagnosed with Alzheimer's disease (AD patient)}
+  \item{Age.at.MRI}{In order to parcellate the brain into regions, both PET and Magnetic Resonance Imaging (MRI) is required. Age.at.MRI denotes the age of the participant at time of MRI scan}
+  \item{Filename}{Name of imaging file}
+  \item{Neocortex}{PET PiB uptake of the neocortex}
+  \item{.}{Columns 7-123 denote PET PiB update on 116 ROIs of the left and right brain hemisphere.}
+  \item{SUV.in.Reference.Region}{Total Standard Uptake Value (SUV) in reference brain region}
 }
 
 \format{

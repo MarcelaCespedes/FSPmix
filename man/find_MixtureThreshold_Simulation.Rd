@@ -26,20 +26,8 @@ Default arguments are method = 'intersection', apply.all.dat = FALSE in order to
   \item{mix.mean}{Vector of mixture model means}
   \item{sw}{boolean: Indicator variable denoting if mix.threshold was found (sw == 1); if threhsold was not found sw == 0}
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Marcela Cespedes and Amy Chan
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 library(mixtools)

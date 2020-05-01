@@ -37,4 +37,4 @@ op$plot.ColouredCoded.genes
 # View 20 simulated genes (features) densities
 op$plot.WhatFSPmixSees
 }
-\keyword{Simulation }% use one of  RShowDoc("KEYWORDS")
+\keyword{Simulation }

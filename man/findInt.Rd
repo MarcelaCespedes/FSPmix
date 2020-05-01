@@ -38,5 +38,5 @@ thr
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Intersection}% use one of  RShowDoc("KEYWORDS")
-\keyword{Mixture model}% __ONLY ONE__ keyword per line
+\keyword{Intersection}
+\keyword{Mixture model}

@@ -4,7 +4,7 @@
 Calculate specificity and sensitivity on FSPmix simulation study predictions
 }
 \description{
-Compute 2x2 confusion matrix as a ratio as well as with numerical values.
+Compute 2 by 2 confusion matrix as a ratio as well as with numerical values.
 }
 \usage{
 spec_sens(real.dat, pred.dat)
@@ -35,5 +35,5 @@ spec_sens(real.dat = real.data, pred.dat = pred.data)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Specificity}% use one of  RShowDoc("KEYWORDS")
-\keyword{Sensitivity}% __ONLY ONE__ keyword per line
+\keyword{Specificity}
+\keyword{Sensitivity}

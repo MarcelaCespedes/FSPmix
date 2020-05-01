@@ -87,7 +87,7 @@ multiplot(plotlist = plot.all, cols = 7)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{Mixture Model}% __ONLY ONE__ keyword per line
+\keyword{Mixture Model}
 \keyword{Feature selection}
 \keyword{Prediction}
 \keyword{Classification}

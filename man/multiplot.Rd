@@ -51,5 +51,5 @@ multiplot(p1, p2, p3, p4, cols = 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ggplot2}% use one of  RShowDoc("KEYWORDS")
-\keyword{multiplot}% __ONLY ONE__ keyword per line
+\keyword{ggplot2}
+\keyword{multiplot}

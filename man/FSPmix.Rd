@@ -27,20 +27,8 @@ FSPmix(dat, boot.size = NULL, no.bootstrap=NULL)
   \item{Plot}{ggplot object which shows the overlapped bootstrapped densities in black, bootstrapped mixture model component means (in gray) as well as the threshold interval (values within the blue lines).}
   \item{Classification.Pred}{Data frame containing the classification of each observation (or person) if two.groups = TRUE. Classification categories are Pred.A and Pred.B according to their feature values determined by FSPmix; and Pred.C denoting an observation remains unclassified as their feature value lies within the seperation interval}
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Marcela Cespedes
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 library(FSPmix)

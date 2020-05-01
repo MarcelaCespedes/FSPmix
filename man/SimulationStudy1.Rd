@@ -23,20 +23,8 @@ First simulation for FSPmix as described in xx.
   \item{plot.ColouredCoded.genes}{ggplot object of the density of the 20 features coloured coded into 2 classifications.}
   \item{plot.WhatFSPmixSees}{ggplot object of uncoloured densities of the distributions that FSPmix will categorise into either 'A' or 'B' groups.}
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Marcela Cespedes
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 op<- SimulationStudy1(sEEd = 487, no.ppl = 1000)
@@ -49,4 +37,4 @@ op$plot.ColouredCoded.genes
 # View 20 simulated genes (features) densities
 op$plot.WhatFSPmixSees
 }
-\keyword{ Simulation }% use one of  RShowDoc("KEYWORDS")
+\keyword{Simulation }% use one of  RShowDoc("KEYWORDS")

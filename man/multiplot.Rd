@@ -15,31 +15,13 @@ multiplot(plotlist = List.Of.Plots, cols = 2)
 \arguments{
   \item{x}{ggplot object}
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
 \references{
-%% ~put references to the literature/web site here ~
+Cookbook for R
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+Cookbook for R
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
 # Example taken from website above.
 library(ggplot2)
@@ -66,9 +48,8 @@ p4 <- ggplot(subset(ChickWeight, Time==21), aes(x=weight, fill=Diet)) +
     theme(legend.position="none")        # No legend (redundant in this graph)
 
 multiplot(p1, p2, p3, p4, cols = 2)
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ggplot2}% use one of  RShowDoc("KEYWORDS")
+\keyword{multiplot}% __ONLY ONE__ keyword per line

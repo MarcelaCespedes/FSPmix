@@ -17,9 +17,6 @@ findInt(mu1, mu2, sd1, sd2, p1, p2, filter=TRUE)
   \item{p1, p2}{fitted proportions for the two components}
   \item{filter}{boolean: if TRUE, try to find the "middle" & real-valued intersection}
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
   \item{rr}{Real value of the intersection between the means of the two Guassian distributions}
   \item{sw}{boolean: value 0 if real continuous intersection value was found; otherwise if no real (and imaginary) value was found sw = 0}
@@ -30,15 +27,6 @@ https://stats.stackexchange.com/questions/311592/how-to-find-the-point-where-two
 }
 \author{
 Amy Chan
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 library(mixtools)

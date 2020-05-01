@@ -14,28 +14,13 @@ spec_sens(real.dat, pred.dat)
   \item{real.dat}{Vector of simulated data which was fed to FSPmix algorithm for a particular feature. Feature classified into groups A or B.}
   \item{pred.dat}{Vector of predictions for a particular feature, classified into either groups A or B.}
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
   \item{tot.obs}{Total number of observations classified}
   \item{conf.mat}{Sensitivity and specificity values on a 2 x 2 confusion matrix}
   \item{con.mat.ratio}{Sensitivity and specificity percentages, 2 x 2 matrix}
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Marcela Cespedes
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 set.seed(123)

@@ -28,8 +28,6 @@ Tzourio-Mazoyer, N., Landeau, B., Papathanassiou, D., Crivello, F., Etard, O., D
 \source{
 Bourgeat, P., Dore, V., Villemagne, V.L., Rowe, C.C., Salvado, O. and Fripp, J., 2013. MilxXplore: a web-based system to explore large imaging datasets. Journal of the American Medical Informatics Association, 20(6), pp.1046-1052
 }
-\references{
-}
 \examples{
 library(FSPmix)
 library(reshape2)

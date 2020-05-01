@@ -17,28 +17,13 @@ find_MixtureThreshold(dat, boot.size, method=c('diff', 'intersect'),
   \item{method}{Either 'diff' or 'intersection'. Former argument estimates the difference in the posterior probability. Later argument calls on function findInt() to find the real value intersection between two Guassian mixture means.}
   \item{apply.all.dat}{boolean: FALSE implies take sample with replacement on dat and is the default for bootstrapping; TRUE denotes otherwise and no sampling of dat is performed}
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
   \item{mix.threshold}{Indicator variable denoting if }
  return(list(mix.threshold=mix.threshold$rr, boot.samp = samp.dat, mix.means = mix.means1,
               sw = sw))
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
 Marcela Cespedes and Amy Chan
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
 library(mixtools)
@@ -54,7 +39,3 @@ op<- find_MixtureThreshold(dat = dat[,1],
 
 str(op)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

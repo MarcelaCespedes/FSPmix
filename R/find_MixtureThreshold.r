@@ -6,8 +6,6 @@
 find_MixtureThreshold<- function(dat, boot.size, method=c('diff', 'intersect'),
                           apply.all.dat = FALSE){
 
-  source("findInt.r")
-
   method <- match.arg(method)
   sw = 0
 

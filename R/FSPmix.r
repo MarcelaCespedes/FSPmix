@@ -134,11 +134,14 @@ FSPmix<- function(dat, boot.size = NULL, no.bootstrap=NULL){
                label = paste("Thresh: (", round(interval.T_e[1],2), ",",
                              round(interval.T_e[2],2), ")", sep = "") ,
                size=3, colour = "blue")+
-      theme_bw() +
       annotate('text', x = Inf, y = Inf, hjust = 1, vjust = 3,
+               label = paste("mean Te: ", round(mean.T_e,2), sep = "") ,
+               size=3, colour = "red")+
+      theme_bw() +
+      annotate('text', x = Inf, y = Inf, hjust = 1, vjust = 4.5,
                label = paste("mu1: ", round(mean.mu[1],2), sep = "") ,
                size=3, colour = "gray55") +
-      annotate('text', x = Inf, y = Inf, hjust = 1, vjust = 4.5,
+      annotate('text', x = Inf, y = Inf, hjust = 1, vjust = 6,
                label = paste("mu2: ", round(mean.mu[2],2), sep = "") ,
                size=3, colour = "gray55") +
       theme(text = element_text(size=12))+

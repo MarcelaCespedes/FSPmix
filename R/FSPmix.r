@@ -126,6 +126,7 @@ FSPmix<- function(dat, boot.size = NULL, no.bootstrap=NULL){
       geom_vline(xintercept = interval.T_e, colour = "blue", size=1) +
       geom_vline(xintercept = mean(mean.mu[1]), colour = "gray55", size=1) +
       geom_vline(xintercept = mean(mean.mu[2]), colour = "gray55", size=1) +
+      geom_vline(xintercept = mean.T_e, colour = "red", size=1) +
       #annotate('text', x = Inf, y = Inf, hjust = 1.2, vjust = 2,
       #         label = paste("Thresh: ",round(interval.T_e[1],2), ",",
       #                       round(interval.T_e[2],2), sep = "") ,
